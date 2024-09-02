@@ -1,0 +1,94 @@
+:root {
+    --color1: rgb(240, 248, 255);
+    /* AliceBlue */
+    --color2: rgb(173, 216, 230);
+    /* LightBlue */
+    --color3: rgb(135, 206, 250);
+    /* LightSkyBlue */
+    --color4: rgb(70, 130, 180);
+    /* SteelBlue */
+    --color5: rgb(0, 191, 255);
+    /* DeepSkyBlue */
+    --color6: rgb(0, 0, 139);
+    /* DarkBlue */
+    --color7: rgb(255, 255, 255);
+    /* White */
+    --color8: rgb(0, 0, 0);
+    /* Black */
+}
+
+.searchResultItem {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.searchResultName {
+    font-weight: bold;
+}
+
+.searchResultEmail {
+    color: #888;
+}
+
+.searchResultTitle {
+    margin-top: 5px;
+    font-style: italic;
+    max-width: fit-content;
+}
+
+
+.containers {
+    padding: 15px;
+
+}
+
+.price {
+    font-weight: bold;
+    float: right;
+}
+
+.containers:hover {
+    border: unset;
+}
+
+.containersQuizz {
+    min-height: 141px;
+    max-height: 142px;
+    min-width: 318px;
+    max-width: 319px;
+}
+
+.cardContainer {
+    margin: 5px;
+}
+
+.mainContainer {
+    justify-content: center !important;
+}
+
+.quizDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #999;
+}
+
+.quizDetails>div {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+
+@media (max-width: 1600px) {
+    .cardContainer {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .cardContainer {
+        flex: 0 0 calc(100% - 20px);
+    }
+}

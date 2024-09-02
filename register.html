@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - LearnUp</title>
+  <link rel="stylesheet" href="./styles/register.css">
+</head>
+
+<body>
+  <div id="welcomeSection">
+    <h1>Welcome to Learn<span style="color: var(--color6); text-shadow: 1px 1px white;">Up</span></h1>
+    <h2>"Elevate your Education"</h2>
+  </div>
+
+  <div id="registerForm" class="container form-container show"
+    style="background: unset; border: 1px solid var(--color1);">
+    <h1>Register</h1>
+    <form method="post">
+      <div class="form">
+        <div class="formGroup">
+          <input type="text" placeholder="Name and Surname" id="nameSurname" class="input" required />
+        </div>
+        <div class="formGroup">
+          <input type="email" placeholder="Email" id="email" class="input" required />
+        </div>
+        <div class="formGroup">
+          <input type="password" placeholder="Password" id="password" class="input" name="password" required />
+        </div>
+        <div class="formGroup">
+          <input type="password" placeholder="Confirm Password" id="confirmPassword" class="input" name="password"
+            required />
+        </div>
+      </div>
+      <div class="form">
+        <div class="formGroup">
+          <select id="userGender" class="input">
+            <option value="">Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="formGroup">
+          <input type="number" placeholder="Enter your age" min="10" max="100" id="age" class="input">
+        </div>
+        <div class="formGroup">
+          <select id="userType" class="input">
+            <option value="">Select user type</option>
+            <option value="user">User/Student</option>
+            <option value="professor">Professor</option>
+          </select>
+        </div>
+        <div class="formGroup">
+          <select id="education" class="input" required>
+            <option value="">Select your education</option>
+            <option value="high-school">High School</option>
+            <option value="bachelors">Bachelors</option>
+            <option value="masters">Masters</option>
+            <option value="phd">PhD</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" id="registerButton">Register</button>
+    </form>
+    <p style="color: var(--color6);">Already have an account? <span><a href="login.html"
+          style="color: var(--color1);">Log in</a></span></p>
+  </div>
+
+  <script src="./scripts/register.js"></script>
+</body>
+
+</html>

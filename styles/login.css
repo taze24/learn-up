@@ -1,0 +1,174 @@
+:root {
+    --color1: rgb(240, 248, 255);
+    /* AliceBlue */
+    --color2: rgb(173, 216, 230);
+    /* LightBlue */
+    --color3: rgb(135, 206, 250);
+    /* LightSkyBlue */
+    --color4: rgb(70, 130, 180);
+    /* SteelBlue */
+    --color5: rgb(0, 191, 255);
+    /* DeepSkyBlue */
+    --color6: rgb(0, 0, 139);
+    /* DarkBlue */
+    --color7: rgb(255, 255, 255);
+    /* White */
+    --color8: rgb(0, 0, 0);
+    /* Black */
+}
+
+* {
+    box-sizing: border-box;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+body {
+    background: linear-gradient(135deg, var(--color6), var(--color3));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color4);
+    box-shadow: 0px 0px 30px 0px var(--color2);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+#welcomeSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    color: var(--color7);
+    animation: grow 5s forwards;
+}
+
+@keyframes grow {
+    from {
+        font-size: 2.5rem;
+    }
+
+    to {
+        font-size: 4rem;
+    }
+}
+
+#welcomeSection h1,
+#welcomeSection span {
+    font-size: 4rem;
+    text-shadow: 2px 2px var(--color8);
+    animation: grow 5s forwards;
+}
+
+#welcomeSection h2 {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px var(--color8);
+}
+
+#welcomeSection button {
+    background-color: var(--color5);
+    color: var(--color7);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#welcomeSection button:hover {
+    background-color: var(--color6);
+}
+
+#welcomeSection #loginText {
+    color: var(--color7);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#welcomeSection #loginText:hover {
+    color: var(--color6);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.form-container h1 {
+    font-size: 2rem;
+    color: var(--color7);
+    text-shadow: 1px 1px var(--color8);
+}
+
+.input {
+    color: var(--color2);
+    border: none;
+    background-color: unset;
+    border-bottom: 2px solid var(--color1);
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.input:focus {
+    border-color: var(--color6);
+    outline: none;
+}
+
+#loginButton {
+    width: 100%;
+    background-color: var(--color6);
+    color: var(--color7);
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#loginButton:hover {
+    background-color: var(--color5);
+}
+
+#loginForm {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#loginForm.show {
+    display: flex;
+}
