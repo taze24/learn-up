@@ -3,12 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const titles = document.querySelectorAll(".title");
     const maxTitleLength = 100; // Set the max character limit
 
-    const nameSurname = localStorage.getItem('nameSurname');
-    // if (nameSurname) {
-    //     document.getElementById('welcomeMessage').textContent = `User: ${nameSurname}`;
-    // } else {
-    //     document.getElementById('welcomeMessage').textContent = `Guest`;
-    // }
+    const currentUserID = localStorage.getItem("userID")
+    console.log(currentUserID)
 
     const url = window.location.href;
     const currentPage = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));

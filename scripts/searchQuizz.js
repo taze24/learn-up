@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainContainer = document.querySelector(".mainContainer");
     const recommendedTemplate = document.getElementById("recommended-template").content.cloneNode(true);
 
+    const currentUserID = localStorage.getItem("userID")
+    console.log(currentUserID)
+
     searchQuery.addEventListener("input", () => {
         const query = searchQuery.value;
         if (query.length < 1) {

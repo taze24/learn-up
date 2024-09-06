@@ -5,11 +5,13 @@ const welcomeName = document.getElementById("name");
 const profileName = document.getElementById("profileName");
 const bio = document.querySelector("[bio]");
 
-const urlParams = new URLSearchParams(window.location.search);
-const info = urlParams.get('id');
-const currentCreator = info.slice(2)
-const currentUser = info.slice(0, 2)
+const currentUserID = localStorage.getItem("userID")
+console.log(currentUserID)
 
+
+const urlParams = new URLSearchParams(window.location.search);
+// Get the creatorId so we can display the data of his profile
+const creatorId = urlParams.get('id');
 
 nav.addEventListener("click", () => {
     window.location.href = "#"
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Display the info about user
                 welcomeName.textContent = data[0].nameSurname.split(" ")[0];
                 bio.textContent = data[0].bio;
-                profileName.textContent = data[0].nameSurname
+                profileName.textContent = data[0].nameSurname;
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             title.textContent = "Title: " + user.title;
 
             clone.querySelector('.btn').addEventListener("click", () => {
-                window.location.href = `lectureRoom.html?id=${currentUser}?${currentCreator}?${user.idvideos}`;
+                window.location.href = `lectureRoom.html?id=${creatorId}?${user.idvideos}`;
             })
 
             container.appendChild(clone);
@@ -58,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Second two numbers are the professors/user ID's to get the videos.
     // Maybe add later for the quizz, courses or smth like that.
 
-    if (currentCreator) {
-        fetchUserData(currentCreator);
+    if (creatorId) {
+        fetchUserData(creatorId);
     } else {
         console.error("User ID not found in the URL");
     }

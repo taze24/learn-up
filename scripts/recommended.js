@@ -2,6 +2,9 @@ const recommendedTemplate = document.getElementById("recommended-template");
 const cardContainer = document.querySelector("[card-container]");
 const nav = document.getElementById("navbarSupportedContent");
 
+const currentUserID = localStorage.getItem("userID")
+console.log(currentUserID)
+
 nav.addEventListener("click", () => {
     window.location.href = "#"
 })
@@ -17,14 +20,12 @@ fetch('http://localhost:8080/users')
             const userType = card.querySelector("[userType]");
             const btn = card.querySelector('[button]');
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentUserID = urlParams.get('id');
+            //const urlParams = new URLSearchParams(window.location.search);
 
             title.textContent = user.bio;
             userName.textContent = user.nameSurname;
 
             if (education && userType) {
-
                 education.textContent = user.education.charAt(0).toUpperCase() + user.education.slice(1);
                 userType.textContent = user.userType.charAt(0).toUpperCase() + user.userType.slice(1);
             }
@@ -32,10 +33,8 @@ fetch('http://localhost:8080/users')
             if (btn) {
 
                 btn.addEventListener("click", () => {
-                    if (currentUserID == null) {
-                        currentUserID = 11
-                    }
-                    window.location.href = `profile.html?id=${currentUserID}${user.userID}`;
+                    // Post the creatorID that user wanted to visit and direct to his profile
+                    window.location.href = `profile.html?id=${user.userID}`;
                 });
             }
 
