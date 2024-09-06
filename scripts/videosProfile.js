@@ -19,11 +19,24 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(res => res.json())
             .then(data => {
                 // display the videos of the selected professor on his profile 
-                displayUserData(data);
+                if (data.length < 1 || data == undefined) {
+                    fetch(`http://localhost:8080/users/${userID}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            welcomeName.textContent = data[0].nameSurname.split(" ")[0]
+                            bio.textContent = data[0].bio;
+                            profileName.textContent = data[0].nameSurname
+                        })
+                    return document.querySelector(".userProfileContainer").innerHTML = "<div class='error'>User has no videos.</div>";
+                } else {
+                    displayUserData(data);
+                }
                 // Display the info about user
-                welcomeName.textContent = data[0].nameSurname.split(" ")[0];
+                console.log(data)
+                welcomeName.textContent = data[0].nameSurname.split(" ")[0]
                 bio.textContent = data[0].bio;
-                profileName.textContent = data[0].nameSurname;
+                profileName.textContent = data[0].nameSurname
+
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);
