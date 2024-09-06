@@ -2,8 +2,11 @@ const recommendedTemplate = document.getElementById("recommended-template");
 const cardContainer = document.querySelector("[card-container]");
 const nav = document.getElementById("navbarSupportedContent");
 
-const currentUserID = localStorage.getItem("userID")
-console.log(currentUserID)
+const logoutBtn = document.getElementById("Logout");
+logoutBtn.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "login.html"
+});
 
 nav.addEventListener("click", () => {
     window.location.href = "#"

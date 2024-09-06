@@ -3,9 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const titles = document.querySelectorAll(".title");
     const maxTitleLength = 100; // Set the max character limit
 
-    const currentUserID = localStorage.getItem("userID")
-    console.log(currentUserID)
-
     const url = window.location.href;
     const currentPage = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
     const navLinks = document.querySelectorAll('li a');

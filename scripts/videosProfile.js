@@ -5,10 +5,6 @@ const welcomeName = document.getElementById("name");
 const profileName = document.getElementById("profileName");
 const bio = document.querySelector("[bio]");
 
-const currentUserID = localStorage.getItem("userID")
-console.log(currentUserID)
-
-
 const urlParams = new URLSearchParams(window.location.search);
 // Get the creatorId so we can display the data of his profile
 const creatorId = urlParams.get('id');
