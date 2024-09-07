@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const title = document.createElement("div");
                     title.classList.add("searchResultTitle");
-                    title.textContent = result.title || "No Title"; // Modify if title is available in the results
+                    title.textContent = result.bio || "No Title"; // Modify if title is available in the results
 
                     item.appendChild(nameSurname);
                     nameSurname.appendChild(email);
