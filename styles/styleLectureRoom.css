@@ -63,6 +63,7 @@ header>p>a:hover {
 }
 
 #searchQuery {
+  width: 100% !important;
   color: black;
 }
 

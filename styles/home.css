@@ -266,13 +266,17 @@ header .watch-link:hover {
     }
 
     #searchQuery {
-        width: 18rem !important;
+        width: 100% !important;
     }
 }
 
 @media (max-width: 768px) {
     [card-container] .containersHome {
         flex: 0 0 calc(50% - 20px);
+    }
+
+    .navBtn {
+        margin-top: 10px
     }
 }
 

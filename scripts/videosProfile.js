@@ -13,6 +13,12 @@ nav.addEventListener("click", () => {
     window.location.href = "#"
 })
 
+const logoutBtn = document.getElementById("Logout");
+logoutBtn.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "login.html"
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const fetchUserData = (userID) => {
         fetch(`http://localhost:8080/videos/${userID}`)
