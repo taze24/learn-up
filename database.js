@@ -92,6 +92,20 @@ export async function createUser(
   return getUser(id);
 }
 
+export async function uploadVideo(userID, videoPath, videoTitle) {
+  try {
+    const [result] = await pool.query(
+      "INSERT INTO videos (userID, videoPath, title) VALUES (?, ?, ?)",
+      [userID, videoPath, videoTitle]
+    );
+    return result.insertId;
+  } catch (error) {
+    console.error('Error inserting video into database:', error);
+    throw error;
+  }
+}
+
+
 export async function getMyLectures() {
   const [rows] = await pool.query("SELECT * FROM myLectures");
   return rows;

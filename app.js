@@ -1,12 +1,42 @@
 import express from "express";
-import { getUser, getVideos, getUsers, createUser, getUserByEmail, getMyLectures, getFavProfessors, getUserVideos, getQuizzes } from "./database.js";
+import { getUser, getVideos, getUsers, createUser, getUserByEmail, getMyLectures, getFavProfessors, getUserVideos, getQuizzes, uploadVideo } from "./database.js";
 import cors from "cors";
+import multer from "multer";
+import path from "path";
 
 const app = express();
 
 app.use(cors());
 
 app.use(express.json());
+
+// Multer configuration for file storage
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/videos"); // Destination folder for uploaded videos
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname)); // Generate unique file names
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// Route to handle video upload
+app.post('/videos', upload.single('video'), async (req, res) => {
+  const { userID, videoTitle } = req.body;
+  const videoPath = req.file.path; // Get the uploaded video path
+
+  try {
+    // Save video info in the database
+    await uploadVideo(userID, videoPath, videoTitle);
+    res.json({ message: 'Video uploaded successfully', videoPath: videoPath });
+  } catch (error) {
+    console.error('Error uploading video:', error);
+    res.status(500).json({ message: 'Error uploading video' });
+  }
+});
 
 app.get("/users", async (req, res) => {
   const users = await getUsers();
