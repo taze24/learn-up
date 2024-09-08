@@ -1,6 +1,6 @@
 const input = document.getElementById("inputVideo");
 
-input.addEventListener("change", async (event) => {
+input.addEventListener("click", async (event) => {
     event.preventDefault();
 
     const userID = localStorage.getItem("userID");

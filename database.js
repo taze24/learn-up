@@ -22,6 +22,14 @@ export async function getUser(userID) {
   ]);
   return rows;
 }
+// Get the video by its ID
+export async function getVideo(id) {
+  const [rows] = await pool.query("SELECT * FROM videos WHERE idvideos = ?", [
+    id,
+  ]);
+  return rows;
+}
+// Get All the videos that the user has
 export async function getUserVideos(id) {
   const [rows] = await pool.query(`SELECT userData.*, videos.*
 FROM userData

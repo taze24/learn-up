@@ -1,5 +1,5 @@
 import express from "express";
-import { getUser, getVideos, getUsers, createUser, getUserByEmail, getMyLectures, getFavProfessors, getUserVideos, getQuizzes, uploadVideo } from "./database.js";
+import { getUser, getVideos, getUsers, createUser, getUserByEmail, getMyLectures, getFavProfessors, getUserVideos, getQuizzes, uploadVideo, getVideo } from "./database.js";
 import cors from "cors";
 import multer from "multer";
 import path from "path";
@@ -38,24 +38,31 @@ app.post('/videos', upload.single('video'), async (req, res) => {
   }
 });
 
+// All the users
 app.get("/users", async (req, res) => {
   const users = await getUsers();
   res.send(users);
 });
-
+// All the videos
 app.get("/videos", async (req, res) => {
   const videos = await getVideos();
   res.send(videos)
 });
-
+// All the quizzes
 app.get("/quizzes", async (req, res) => {
   const videos = await getQuizzes();
   res.send(videos)
 });
-
-app.get("/videos/:idvideos", async (req, res) => {
-  const id = req.params.idvideos;
+// Getting All the users videos
+app.get("/videos/:userID", async (req, res) => {
+  const id = req.params.userID;
   const user = await getUserVideos(id);
+  res.send(user);
+});
+// Getting the specific video of one user
+app.get("/videos/:userID/:idvideos", async (req, res) => {
+  const id = req.params.idvideos;
+  const user = await getVideo(id);
   res.send(user);
 });
 
@@ -65,7 +72,7 @@ app.get("/users/:userID", async (req, res) => {
   const user = await getUser(id);
   res.send(user);
 });
-
+// Post new user to the database
 app.post("/users", async (req, res) => {
   const { email, password, userType, education, nameSurname } = req.body;
 
