@@ -1,4 +1,4 @@
-const input = document.getElementById("inputVideo");
+const input = document.getElementById("uploadBtn");
 
 input.addEventListener("click", async (event) => {
     event.preventDefault();
